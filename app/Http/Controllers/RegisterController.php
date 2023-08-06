@@ -9,7 +9,7 @@ class RegisterController extends Controller
     public function registerUser()
     {
         // awaiting business logic for user registration
-        // this is to test GH Actions
+        // this is to test GH Actions v2
         return 'user!';
     }
 }

@@ -1,0 +1,28 @@
+name: Automatic Review Request
+
+on:
+    pull_request:
+        types:
+            - opened
+
+jobs:
+    request-review:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Request review from you
+              run: |
+                  PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
+                  REVIEWER_USERNAME="davydocsurg"
+                  ACCESS_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+
+                  curl -X POST \
+                    -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+                    "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/requested_reviewers" \
+                    -d '{
+                      "reviewers": ["'$REVIEWER_USERNAME'"]
+                    }'

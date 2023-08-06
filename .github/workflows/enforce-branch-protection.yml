@@ -1,0 +1,22 @@
+name: Enforce Branch Protection
+
+on:
+    push:
+        branches:
+            - main # Replace with the name of your protected branch
+
+jobs:
+    enforce_protection:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Check if push is allowed
+              run: |
+                  BRANCH_NAME=${{ github.ref }}
+                  if [[ "$BRANCH_NAME" == "refs/heads/main" ]]; then
+                    echo "Push to main branch is not allowed. Please submit a pull request."
+                    exit 1
+                  fi

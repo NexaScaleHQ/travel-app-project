@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'phone_number' => null,
             'address' => '123 Main Street',
             'password' => Hash::make('password'), 
-            // 'confirm_password' => Hash::make('password'), //confirm_password column does does not exist
+            'confirm_password' => Hash::make('password'), 
             'is_admin' => true,
         ]);
     }

@@ -10,6 +10,7 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
+public/build
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
@@ -21,7 +22,11 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+<<<<<<< HEAD
 
 #editor specific
 .vscode
 .idea
+=======
+.vscode
+>>>>>>> ead3b80 ([ADD] logincontroller, login endpoint (v1))

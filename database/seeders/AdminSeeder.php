@@ -14,7 +14,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('admin')->insert([
+        DB::table('users')->insert([
             'first_name' => 'John',
             'last_name' => 'Doe',
             'username' => 'admin',
@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'phone_number' => null,
             'address' => '123 Main Street',
             'password' => Hash::make('password'), 
-            'confirm_password' => Hash::make('password'), 
+            // 'confirm_password' => Hash::make('password'), //confirm_password column does does not exist
             'is_admin' => true,
         ]);
     }

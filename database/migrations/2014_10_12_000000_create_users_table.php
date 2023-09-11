@@ -25,7 +25,6 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->string('is_active')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

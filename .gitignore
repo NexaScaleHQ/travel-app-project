@@ -22,11 +22,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-<<<<<<< HEAD
 
 #editor specific
 .vscode
 .idea
-=======
-.vscode
->>>>>>> ead3b80 ([ADD] logincontroller, login endpoint (v1))

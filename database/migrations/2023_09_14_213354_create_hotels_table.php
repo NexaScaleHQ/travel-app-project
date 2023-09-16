@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hotels', function (Blueprint $table) {
-            $table->integer('user_id');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->char('restuarant_name', 100);
             $table->char('description', 100);
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->integer('rating');
             $table->integer('price_range');
             $table->boolean('is_open');
+            $table->timestamps();
         });
     }
 

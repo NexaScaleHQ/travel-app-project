@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TravelItinerary extends Model
 {
     use HasFactory;
+
+    public function user(): BelongsTo {
+        $this->belongsTo(User::class);
+    }
+    
 }

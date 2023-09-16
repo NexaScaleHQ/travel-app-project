@@ -25,7 +25,6 @@ return new class extends Migration
             $table->text('reviews')->nullable();
             $table->boolean('is_available');
             $table->timestamps();
-
             $table
                 ->foreign('user_id')
                 ->references('id')

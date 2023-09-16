@@ -13,19 +13,18 @@ return new class extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->char('hotel_name');
-            $table->char('description', 255);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('hotel_name');
+            $table->string('description');
             $table->integer('location');
             $table->integer('rating');
             $table->integer('price_range');
-            $table->char('amenities', 255);
-            $table->date('check_in_time');
-            $table->date('check_out_time');
+            $table->string('amenities');
+            $table->dateTime('check_in_time');
+            $table->dateTime('check_out_time');
             $table->boolean('is_wifi_available');
-            $table->char('contact_information', 255);
-            $table->char('reviews', 255);
+            $table->string('contact_information');
+            $table->string('reviews');
             $table->timestamps();
         });
     }

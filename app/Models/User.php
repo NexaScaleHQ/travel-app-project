@@ -12,10 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function images() {
-        return $this->morphMany(Image::class, 'imageable');
-    }
-
     /**
      * The attributes that are mass assignable.
      *

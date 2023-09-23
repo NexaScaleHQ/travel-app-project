@@ -16,11 +16,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Hotel::class);
     }
 
-    // TO-DO: Create Restaurant table before defining relationship
-    
-    // public function restaurants() {
-    //     return $this->hasMany(Restaurant::class);
-    // }
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class);
+    }
 
     public function trips() {
         return $this->hasMany(Trip::class);

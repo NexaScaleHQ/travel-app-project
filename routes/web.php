@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Toilet;
+use App\Models\NextOfKin;
+use App\Models\Trip;
+use App\Models\Wishlist;
+
 
 /*
 |--------------------------------------------------------------------------

@@ -18,6 +18,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function images() {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+    
     public function hotels() {
         return $this->belongsToMany(Hotel::class);
     }

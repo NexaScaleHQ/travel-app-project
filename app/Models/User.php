@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Chat;
+use App\Models\NextOfKin;
+use App\Models\Toilets;
 
 class User extends Authenticatable
 {
@@ -66,5 +71,21 @@ class User extends Authenticatable
 
     public function travelItineraries(): HasMany {
         return $this->hasMany(TravelItinerary::class);
+    }
+
+    public function chats(): HasMany {
+        return $this->hasMany(Chat::class);
+    }
+
+    public function wishlists(): HasMany {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    public function nextOfKin(): HasOne {
+        return $this->hasOne(NextOfKin::class);
+    }
+
+    public function toilets(): BelongsToMany {
+        return $this->belongsToMany(Toilet::class);
     }
 }

@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\v1\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,16 +15,14 @@ use App\Http\Controllers\RegisterController;
 */
 
 // Authentication Routes
-require_once(__DIR__.'/auth.php');
+require_once(__DIR__ . '/auth.php');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::post('/user', [RegisterController::class, 'registerUser']);
-Route::post('/users', function () {
-    return json_encode(['name' => 'names']);
-});
+
 
 
 

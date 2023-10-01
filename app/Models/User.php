@@ -10,33 +10,19 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Chat;
-use App\Models\NextOfKin;
-use App\Models\Toilets;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function hotels() {
-        return $this->belongsToMany(Hotel::class);
-    }
-
-    public function restaurants() {
-        return $this->hasMany(Restaurant::class);
-    }
-
-    public function trips() {
-        return $this->hasMany(Trip::class);
-    }
-    
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -60,6 +46,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function hotels() {
+        return $this->belongsToMany(Hotel::class);
+    }
+
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class);
+    }
+
+    public function trips() {
+        return $this->hasMany(Trip::class);
+    }
 
     public function savedLocations(): HasMany {
         return $this->hasMany(SavedLocation::class);

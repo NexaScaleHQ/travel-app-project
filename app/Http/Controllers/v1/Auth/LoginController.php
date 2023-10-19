@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,10 +12,12 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     // Login Route
-    public function login() : JsonResponse 
+    public function login(LoginRequest $request) : JsonResponse 
     {   
         try {
-            $user = User::where('email', request('email'))->first();
+            $data = $request->validated();
+
+            $user = User::where('email', $data['email'])->first();
 
             if (!$user || !Hash::check(request('password'), $user->password)) {
                 throw new \Exception('Invalid Credentials');

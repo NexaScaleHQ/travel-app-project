@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('country')->nullable();
             $table->string('interests')->nullable();
-            $table->string('role')->nullable();
-            $table->boolean('is_admin')->default(false);
             $table->string('is_active')->nullable();
             $table->timestamps();
         });

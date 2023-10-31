@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\v1\Auth\RegisterController;
+use App\Http\Controllers\v1\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,10 +15,12 @@ use App\Http\Controllers\v1\Auth\RegisterController;
 |
 */
 
+
+
 // Authentication Routes
 require_once(__DIR__ . '/auth.php');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-

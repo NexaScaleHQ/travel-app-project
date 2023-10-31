@@ -15,7 +15,6 @@ use App\Http\Controllers\v1\Auth\LoginController;
 |
 */
 
-Route::post('/login', [LoginController::class, 'login']);
 
 
 // Authentication Routes

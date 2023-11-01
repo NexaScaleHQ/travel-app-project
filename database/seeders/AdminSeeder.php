@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+        $superAdmin = User::create([
             'first_name' => 'John',
             'last_name' => 'Doe',
             'username' => 'admin',
@@ -21,7 +22,7 @@ class AdminSeeder extends Seeder
             'phone_number' => null,
             'address' => '123 Main Street',
             'password' => Hash::make('password'),
-            'is_admin' => true,
         ]);
+        $superAdmin->assignRole('super_admin');
     }
 }

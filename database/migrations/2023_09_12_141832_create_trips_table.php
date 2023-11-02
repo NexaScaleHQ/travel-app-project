@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->integer('current_destination');
+            $table->integer('pickup_location');
             $table->foreignId('user_id')
-                ->constrained();
+                ->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->longText('description');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->integer('location');
+            $table->integer('dropoff_location');
             $table->integer('price');
             $table->integer('max_capacity');
             $table->timestamps();

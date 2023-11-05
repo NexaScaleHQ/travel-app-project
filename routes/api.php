@@ -17,6 +17,7 @@ use App\Http\Controllers\v1\Auth\LoginController;
 
 
 
+
 // Authentication Routes
 require_once(__DIR__ . '/auth.php');
 

@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Http\Resources\UserResources;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
     // Login Route
-    public function login(LoginRequest $request) : JsonResponse 
-    {   
+    public function login(LoginRequest $request): JsonResponse
+    {
         try {
             $data = $request->validated();
 
@@ -28,12 +28,11 @@ class LoginController extends Controller
             return response()->json([
                 'message' => 'Login Successful',
                 'token' => $token,
+                'data' => new UserResources($user),
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Invalid Credentials', 
-                'error' => $th->getMessage()
+                'message' => 'Invalid Credentials',
             ], 401);
         }
     }

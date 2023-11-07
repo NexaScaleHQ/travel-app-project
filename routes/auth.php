@@ -15,3 +15,4 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [LoginController::class, 'login'])->name('login');
     Route::post('register', [RegisterController::class, 'registerUser'])->name('register');
 });
+

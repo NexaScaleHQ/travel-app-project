@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Users */
+ * @mixin \App\Models\User */
 
 class UserResources extends JsonResource
 {
@@ -22,7 +22,6 @@ class UserResources extends JsonResource
             'email' => $this->email,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-
         ];
     }
 }

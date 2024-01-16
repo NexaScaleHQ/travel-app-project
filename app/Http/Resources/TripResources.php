@@ -26,7 +26,6 @@ class TripResources extends JsonResource
             'dropoff_location' => $this->dropoff_location,
             'price' => $this->price,
             'max_capacity' => $this->max_capacity,
-
         ];
     }
 }

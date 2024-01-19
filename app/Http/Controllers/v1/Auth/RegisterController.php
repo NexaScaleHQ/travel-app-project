@@ -4,47 +4,30 @@ namespace App\Http\Controllers\v1\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResources;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use Illuminate\Support\Js;
 
 class RegisterController extends Controller
 {
-    public function registerUser(Request $request)
+    public function registerUser(RegisterRequest $request): JsonResponse
     {
-        $validator = $this->validator( $request );
-
-        if ($validator->fails()) {
-            return response($validator->errors(), 400);
-        }
-
         try {
-            $user = User::create([...$validator->validated(), 'password' => Hash::make($validator->validated()['password'])]);
-            
-            if($user) {
-                $token = $user->createToken('token')->plainTextToken;
+            $data = $request->validated();
 
-                return [
-                    'message' => 'user registered successfully',
-                    'token' => $token,
-                    'user' => $user,
-                ];
-            }
+            $user = User::create($data);
+
+            return response()->json([
+                'message' => 'User Registered Successfully',
+                'data' => new UserResources($user),
+            ], 201);
         } catch (\Throwable $th) {
-            return response('Something went wrong', 500);
-        } 
-    }
-
-    public function validator(Request $request){
-
-        $validator = Validator::make($request->all(),[
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed',
-        ]);
-
-        return $validator;
+            return response()->json([
+                'message' => 'Error Registering User',
+            ], 500);
+        }
     }
 }

@@ -12,11 +12,24 @@ class Trip extends Model
 {
     use HasFactory;
 
-    public function user() {
+    protected $fillable = [
+        'user_id',
+        'description',
+        'start_date',
+        'end_date',
+        'pickup_location',
+        'dropoff_location',
+        'price',
+        'max_capacity',
+    ];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function wishlists(): HasMany {
+    public function wishlists(): HasMany
+    {
         return $this->hasMany(Wishlist::class);
     }
 }

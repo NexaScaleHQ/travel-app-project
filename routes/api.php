@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\v1\Auth\RegisterController;
-use App\Http\Controllers\v1\Auth\LoginController;
+use App\Http\Controllers\v1\TripController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,10 +17,19 @@ use App\Http\Controllers\v1\Auth\LoginController;
 
 
 
+
 // Authentication Routes
 require_once(__DIR__ . '/auth.php');
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+//Auth Routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+});
+Route::prefix('trips')->group(function () {
+    Route::get('/', [TripController::class, 'index'])->name('trips.index');
+    Route::post('/', [TripController::class, 'store'])->name('trips.store');
 });

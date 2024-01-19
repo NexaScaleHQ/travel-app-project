@@ -28,9 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-
-    Route::prefix('trips')->group(function () {
-        Route::get('/', [TripController::class, 'index'])->name('trips.index');
-        Route::post('/', [TripController::class, 'store'])->name('trips.store');
-    });
+});
+Route::prefix('trips')->group(function () {
+    Route::get('/', [TripController::class, 'index'])->name('trips.index');
+    Route::post('/', [TripController::class, 'store'])->name('trips.store');
 });

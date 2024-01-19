@@ -27,7 +27,7 @@ class TripController extends Controller
         $data = $request->validated();
 
         $trip = Trip::create(array_merge($data, [
-            'user_id' => auth()->user()->id,
+            // 'user_id' => auth()->user()->id,
         ]));
 
         return response()->json([
